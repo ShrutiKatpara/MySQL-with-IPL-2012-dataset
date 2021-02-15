@@ -4,8 +4,6 @@ create database assignment3;
 
 SET GLOBAL local_infile=1;
 
-show tables;
-
 use assignment3;
 
 create table team (

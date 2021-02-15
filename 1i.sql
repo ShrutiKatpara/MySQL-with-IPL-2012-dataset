@@ -13,6 +13,7 @@ create view indian_players as
 select player_name, total_runs
 from onei
 where country_name = "India"
+order by player_name
 ;
 
 select * from indian_players;
