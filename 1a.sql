@@ -12,3 +12,5 @@ select *
 from onea
 where total_runs in 
 (select min(total_runs) from onea); 
+
+drop view onea;

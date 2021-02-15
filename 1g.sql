@@ -6,7 +6,7 @@ left join player on (ball_by_ball.striker = player.player_id)
 group by striker
 ;
 
-select country_name, sum(average)/count( distinct(batsman)) as country_avg
+select country_name,sum(average)/count( distinct(batsman)) as country_avg
 from oneg
 group by country_name
 order by country_avg desc
