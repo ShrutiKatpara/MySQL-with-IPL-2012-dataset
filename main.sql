@@ -8,13 +8,13 @@ use assignment3;
 
 create table team (
 	team_id int auto_increment,
-    team_name varchar(256),
+    team_name varchar(256) not null,
     primary key (team_id)
 );
 
 create table player (
 	player_id int auto_increment,
-    player_name text,
+    player_name text not null,
     dob date,
     batting_hand text,
     bowling_skill text,
@@ -24,8 +24,8 @@ create table player (
 
 create table match_match (
 	match_id int auto_increment,
-    team1 int,
-    team2 int,
+    team1 int not null,
+    team2 int not null,
     match_date date,
     season_id int,
     venue text,
@@ -47,7 +47,7 @@ create table match_match (
 create table player_match (
 	match_id int,
     player_id int,
-    role text, 
+    role text not null, 
     team_id int,
     primary key (match_id, player_id),
     foreign key (player_id) references player(player_id) on delete cascade on update cascade,
@@ -59,7 +59,7 @@ create table wicket_taken (
 	match_id int,
     over_id int,
     ball_id int,
-    player_out int,
+    player_out int not null,
     kind_out text,
     innings_no int,
     primary key (match_id, ball_id, over_id, innings_no),
@@ -71,7 +71,7 @@ create table ball_by_ball (
   match_id INT,
   over_id INT ,
   ball_id INT,
-  innings_no INT,
+  innings_no INT not null,
   team_batting INT,
   team_bowling int,
   striker_batting_position INT,
@@ -91,8 +91,8 @@ create table batsman_scored(
     match_id int,
     over_id int,
     ball_id int,
-    runs_scored int,
-    innings_no int,
+    runs_scored int not null,
+    innings_no int not null,
     primary key (match_id, over_id, ball_id, innings_no),
     foreign key (match_id) references match_match(match_id) on delete cascade on update cascade
 );
@@ -102,8 +102,8 @@ create table extra_runs (
     over_id int,
     ball_id int,
     extra_type text,
-    extra_runs int,
-    innings_no int,
+    extra_runs int not null,
+    innings_no int not null,
     primary key (match_id, over_id, ball_id, innings_no),
     foreign key (match_id) references match_match(match_id) on delete cascade on update cascade
 );
