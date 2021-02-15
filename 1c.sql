@@ -10,6 +10,8 @@ order by number_of_legbye_runs desc, venue
 select *
 from onec
 where number_of_legbye_runs in
-(select max(number_of_legbye_runs) from onec);
+(select max(number_of_legbye_runs) from onec)
+order by venue
+;
 
 drop view onec;
